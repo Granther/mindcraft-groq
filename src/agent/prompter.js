@@ -6,6 +6,7 @@ import { stringifyTurns } from '../utils/text.js';
 import { getCommand } from './commands/index.js';
 
 import { Gemini } from '../models/gemini.js';
+import { GroqWrapper } from '../models/groq.js';
 import { GPT } from '../models/gpt.js';
 import { Claude } from '../models/claude.js';
 import { ReplicateAPI } from '../models/replicate.js';
@@ -32,7 +33,7 @@ export class Prompter {
             else if (chat.model.includes('meta/') || chat.model.includes('mistralai/') || chat.model.includes('replicate/'))
                 chat.api = 'replicate';
             else
-                chat.api = 'ollama';
+                chat.api = 'groq';
         }
 
         console.log('Using chat settings:', chat);
@@ -45,14 +46,14 @@ export class Prompter {
             this.chat_model = new Claude(chat.model, chat.url);
         else if (chat.api == 'replicate')
             this.chat_model = new ReplicateAPI(chat.model, chat.url);
-        else if (chat.api == 'ollama')
-            this.chat_model = new Local(chat.model, chat.url);
+        else if (chat.api == 'groq')
+            this.chat_model = new GroqWrapper(chat.model, chat.url);
         else
             throw new Error('Unknown API:', api);
 
         let embedding = this.profile.embedding;
         if (embedding === undefined) {
-            if (chat.api !== 'ollama')
+            if (chat.api !== 'groq')
                 embedding = {api: chat.api};
             else
                 embedding = {api: 'none'};

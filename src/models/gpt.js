@@ -9,8 +9,8 @@ export class GPT {
         if (url)
             config.baseURL = url;
 
-        if (hasKey('OPENAI_ORG_ID'))
-            config.organization = getKey('OPENAI_ORG_ID');
+        // if (hasKey('OPENAI_ORG_ID'))
+        //     config.organization = getKey('OPENAI_ORG_ID');
 
         config.apiKey = getKey('OPENAI_API_KEY');
 
