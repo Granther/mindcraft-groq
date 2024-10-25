@@ -1,5 +1,5 @@
 # Mindcraft-Groq
-- Implementation allowing for use with Groq with Mindcraft, significantly speeding up the experience. Mindcraft is an application allowing for an LLM to interact with minecraft by calling specific bot commands, please see the original project here:
+- Implementation allowing for use with Groq with Mindcraft, significantly speeding up the experience. Mindcraft is an application allowing for an LLM to interact with minecraft by calling specific bot commands, please see the original project [here](https://github.com/kolbytn/mindcraft)
 
 ### What problem does this solve?
 - Mindcraft has support for OpenAI, Ollama and Claude's Chat API's, but not Groq
